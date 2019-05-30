@@ -1,13 +1,12 @@
-import librariesList from './libraries.json'
 
 const libraries = (state = [], action) => {
     switch (action.type) {
         case "FETCH_LIBRARIES":
-            return librariesList;
+            return action.payload;
 
         default:
             return state;
     }
 }
 
-export default { libraries };
+export default libraries;

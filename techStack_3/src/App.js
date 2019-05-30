@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux'
 import reducers from './reducers'
-import { Header } from './components/common'
+import Main from './components/Main';
 
 
-export default class App extends Component {
-  render() {
-    return (
-      <Provider store={createStore(reducers)}>
-        <View style={styles.container}>
-          <Header title="React Trends" />
-        </View>
-      </Provider>
-
-    );
-  }
+export default App = (props) => {
+  return (
+    <Provider store={createStore(reducers, applyMiddleware(thunk))}>
+      <Main />
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers'
 import LoginForm from './components/LoginForm';
+import { Header } from './components/common';
 
 
 export default class App extends Component {
@@ -11,6 +12,7 @@ export default class App extends Component {
     return (
       <Provider store={createStore(reducers)}>
         <View style={styles.container}>
+          <Header title='Management' />
           <LoginForm />
         </View>
       </Provider>

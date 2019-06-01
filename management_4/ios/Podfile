@@ -1,0 +1,23 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'management_4' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+  pod 'Firebase/Core','~> 5.20.1'
+  pod 'Firebase/Auth', '~> 5.20.1'
+
+  # Pods for management_4
+
+  target 'management_4-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'management_4Tests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+

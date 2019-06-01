@@ -5,6 +5,7 @@ import {
     StyleSheet,
     TouchableWithoutFeedback,
     TouchableHighlight,
+    UIManager,
     LayoutAnimation
 } from 'react-native'
 import { CardItem } from './common'
@@ -32,6 +33,9 @@ class ListItem extends Component {
     }
 
     componentDidUpdate() {
+
+        UIManager.setLayoutAnimationEnabledExperimental &&
+            UIManager.setLayoutAnimationEnabledExperimental(true);
         LayoutAnimation.spring();
     }
 

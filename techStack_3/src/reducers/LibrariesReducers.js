@@ -9,4 +9,18 @@ const libraries = (state = [], action) => {
     }
 }
 
-export default libraries;
+const selectedLibrary = (state = { id: null }, action) => {
+    switch (action.type) {
+        case 'LIBRARY_SEL':
+
+            return { ...action.payload };
+
+        default:
+            return state;
+    }
+}
+
+export default {
+    libraries,
+    selectedLibrary
+};

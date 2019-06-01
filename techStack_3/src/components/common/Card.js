@@ -13,7 +13,7 @@ const Card = (props) => {
 const CardItem = (props) => {
     const { ItemStyle } = Style;
     return (
-        <View style={{ ...ItemStyle, ...props.style }}>
+        <View onTouchEnd={props.onClick} style={{ ...ItemStyle, ...props.style }}>
             {props.children}
         </View>
     );

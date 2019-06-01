@@ -7,3 +7,10 @@ export const fetchLibraries = () => (dispatch) => {
     });
 }
 
+export const selectLibrary = (data) => (dispatch) => {
+    dispatch({
+        type: 'LIBRARY_SEL',
+        payload: data
+    });
+}
+

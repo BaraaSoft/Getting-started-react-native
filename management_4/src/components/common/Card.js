@@ -41,7 +41,8 @@ const Style = StyleSheet.create({
         elevation: 1,
     },
     ItemStyle: {
-        padding: 8,
+        paddingLeft:12,
+        paddingRight:12,
         borderBottomWidth: 1,
         borderColor: '#E8E8E8',
     }

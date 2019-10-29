@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { View, Animated, PanResponder, Dimensions, StyleSheet } from 'react-native';
+import {
+    View, Animated,
+    PanResponder, Dimensions,
+    StyleSheet, LayoutAnimation, UIManager
+} from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -29,6 +33,12 @@ class Collection extends Component {
         });
 
         this.state = { position, panRespon, index: 0 }
+    }
+
+
+    componentDidMount() {
+        UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+        LayoutAnimation.spring();
     }
 
     resetCardPosition() {
@@ -97,7 +107,7 @@ class Collection extends Component {
                 </Animated.View>
             );
             return (
-                <Animated.View key={item.id} style={styles.cardStyle}>
+                <Animated.View key={item.id} style={[styles.cardStyle, { top: 10 * (index - indx) }]}>
                     {renderCard(item)}
                 </Animated.View>
             )

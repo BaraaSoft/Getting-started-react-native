@@ -112,7 +112,7 @@ class Collection extends Component {
                 </Animated.View>
             );
             return (
-                <Animated.View key={item.id} style={[styles.cardStyle, { top: 10 * (index - indx) }]}>
+                <Animated.View key={item.id} style={[styles.cardStyle, { top: 10 * (indx - index) }]}>
                     {renderCard(item)}
                 </Animated.View>
             )
@@ -120,7 +120,7 @@ class Collection extends Component {
     }
     render() {
         return (
-            <View>
+            <View style={{ marginTop: 200 }}>
                 {this.renderCards.call(this)}
             </View>
         );

@@ -36,9 +36,14 @@ class Collection extends Component {
     }
 
 
-    componentDidMount() {
+    componentDidUpdate() {
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
         LayoutAnimation.spring();
+    }
+    componentWillReceiveProps(nextProps) {
+        const newData = nextProps.data;
+        const olddata = this.props.data;
+        if (newData !== olddata) this.setState({ index: 0 });
     }
 
     resetCardPosition() {
@@ -99,7 +104,7 @@ class Collection extends Component {
         const { data, renderCard } = this.props;
         const { index, panRespon } = this.state;
 
-        return data.map((item, indx) => {
+        return data.reverse().map((item, indx) => {
             if (indx < index) return null;
             else if (indx == index) return (
                 <Animated.View key={item.id} {...panRespon.panHandlers} style={[this.cardStyle.call(this), styles.cardStyle]}>
@@ -111,7 +116,7 @@ class Collection extends Component {
                     {renderCard(item)}
                 </Animated.View>
             )
-        }).reverse();
+        });
     }
     render() {
         return (

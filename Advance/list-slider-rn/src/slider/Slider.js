@@ -13,7 +13,10 @@ class Slider extends Component {
         super(props);
         const position = new Animated.ValueXY();
         const panRespon = PanResponder.create({
-            onStartShouldSetPanResponder: () => true,
+            // onStartShouldSetPanResponder: () => true,
+            onMoveShouldSetPanResponder: (event, guesture) => {
+                const isFarLeft = event.nativeEvent.pageX < Math.floor(width * 0.25);
+            },
             onPanResponderMove: (event, guesture) => {
                 position.setValue({ x: guesture.dx, y: 0 })
             },

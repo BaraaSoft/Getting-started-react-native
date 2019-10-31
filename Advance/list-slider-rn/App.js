@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ItemSlider from './src/slider/ItemSlider';
+import { Slider } from './src/slider/Slider';
 
 export default function App() {
+  const renderItem = function () {
+    return <ItemSlider />
+  }
   return (
     <View style={styles.container}>
       <View style={styles.otherView}>
-        <ItemSlider />
+        <Slider data={[1]} renderItem={renderItem} />
       </View>
     </View>
   );

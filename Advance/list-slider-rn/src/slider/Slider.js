@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import {
     View, StyleSheet,
     Text, PanResponder,
-    Animated, ScrollView
+    Animated, ScrollView, Dimensions
 } from 'react-native';
+import SubItem from './SubItem';
 
+const SCREEN_WIDTH = Dimensions.get('window').width
 class Slider extends Component {
     static defaultProps = {
         renderItem: () => { }
@@ -15,7 +17,18 @@ class Slider extends Component {
         const panRespon = PanResponder.create({
             // onStartShouldSetPanResponder: () => true,
             onMoveShouldSetPanResponder: (event, guesture) => {
-                const isFarLeft = event.nativeEvent.pageX < Math.floor(width * 0.25);
+                //const isFarLeft = event.nativeEvent.pageX < Math.floor(width * 0.25);
+                const distance = SCREEN_WIDTH * .10;
+
+                if (guesture.dx >= distance) {
+                    this.setState({ showSubView: 'right' })
+                    return true;
+                } else if (guesture.dx <= -distance) {
+                    this.setState({ showSubView: 'left' })
+                    return true;
+                }
+
+                return false;
             },
             onPanResponderMove: (event, guesture) => {
                 position.setValue({ x: guesture.dx, y: 0 })
@@ -25,7 +38,7 @@ class Slider extends Component {
             }
         });
 
-        this.state = { panRespon, position }
+        this.state = { panRespon, position, showSubView: 'left' }
     }
 
     getItemSyle() {
@@ -37,13 +50,16 @@ class Slider extends Component {
     }
     renderSliderItems() {
         const { data, renderItem } = this.props;
-        const { panRespon } = this.state;
-        return data.map(itemData => {
+        const { panRespon, showSubView } = this.state;
+        return data.map((itemData, indx) => {
 
             return (
-                <Animated.View {...panRespon.panHandlers} style={this.getItemSyle()} >
-                    {renderItem(itemData)}
-                </Animated.View>
+                <View key={indx} style={{ flex: 1 }}>
+                    <Animated.View {...panRespon.panHandlers} style={this.getItemSyle()} >
+                        {renderItem(itemData)}
+                    </Animated.View>
+                    <SubItem showSubView={showSubView} />
+                </View>
             );
         });
     }

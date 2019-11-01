@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, PanResponder, Animated, Image } from 'react-native';
 import moment from 'moment';
 
+import { Ionicons } from '@expo/vector-icons';
+
 class ItemSlider extends Component {
+
+
     render() {
         return (
             <View style={styles.container}>
+
                 <Image source={{ uri: "https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1235&q=80" }} style={styles.image} />
                 <View style={styles.containerTwo}>
                     <Text style={styles.title} numberOfLines={1} ellipsizeMode='tail' >Taffeny Doe</Text>
@@ -31,7 +36,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         height: 80,
         padding: 8,
-        borderBottomColor: '#e4e4e4'
+        borderBottomColor: '#e4e4e4',
+        justifyContent: 'flex-end',
+        zIndex: 3
+
     },
     containerTwo: {
         flex: 2,

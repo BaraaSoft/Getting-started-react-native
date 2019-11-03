@@ -1,10 +1,10 @@
 
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, PanResponder, Animated, Image, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-class SubItem extends Component {
+class ItemSecondary extends Component {
     state = {
         showSubView: 'right'
     }
@@ -20,6 +20,7 @@ class SubItem extends Component {
         }
     }
     renderLeftSubview() {
+        // subitem red : only visible when swipe left 
         return (
             <View style={this.subViewStyle()}>
                 <MaterialIcons name="delete-sweep" size={32} color="white" />
@@ -27,7 +28,7 @@ class SubItem extends Component {
         );
     }
     renderRightSubview() {
-        // subitem yellow
+        // subitem yellow : only visible when swipe right
         return (
             <View style={[this.subViewStyle(),
             {
@@ -41,7 +42,7 @@ class SubItem extends Component {
         )
     }
     subViewStyle() {
-        // subitem red
+        // create a default subview styling
         return {
             ...styles.container,
             backgroundColor: '#dd2c00',
@@ -54,6 +55,7 @@ class SubItem extends Component {
 
     render() {
         const { showSubView } = this.state;
+        // Determining whether to show left view or right view based on (showSubview)
         return (
             showSubView == 'right' ? this.renderRightSubview() : this.renderLeftSubview()
         );
@@ -79,4 +81,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SubItem;
+export default ItemSecondary;

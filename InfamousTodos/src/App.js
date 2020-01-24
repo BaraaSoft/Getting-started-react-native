@@ -13,11 +13,9 @@ import Header from './components/Header';
 
 
 
-const RotatedBox = styled.View`
-  /* transform: rotate(90deg); */
-  font-variant: small-caps;
-  margin: 55px 55px 2px;
-  background-color:red;
+const Box = styled.View`
+    display:flex;
+    flex:1;
 `;
 
 const Title = styled.Text`
@@ -28,15 +26,12 @@ font-size:16px;
 
 
 
-const App = () => {
+const App = (props) => {
 
     return (
-
-        <View>
-            <Header></Header>
-        </View>
-
-
+        <Box>
+            <Header />
+        </Box>
     );
 }
 

@@ -58,7 +58,7 @@ const Header = (props) => {
                 </View>
                 <TouchableOpacity style={mainStyle.IconStand}>
 
-                    <Icon name='bells' size={26} color="#0072ff" light />
+                    <Icon name='bells' size={26} color="#fff" light />
 
                 </TouchableOpacity>
             </Toolbar>
@@ -78,15 +78,16 @@ const mainStyle = StyleSheet.create({
         // borderColor: '#ffffff22',
 
 
-        backgroundColor: '#ffffff',
+        // backgroundColor: '#ffffff',
+        backgroundColor: '#00c6ff',
         paddingHorizontal: 4,
-        paddingVertical: 2,
+        paddingVertical: 3,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 1,
         },
-        shadowOpacity: .5,
+        shadowOpacity: .3,
         shadowRadius: 1.41,
 
         elevation: 1,

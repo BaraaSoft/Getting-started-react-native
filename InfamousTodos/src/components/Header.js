@@ -91,7 +91,7 @@ const mainStyle = StyleSheet.create({
         shadowRadius: 1.41,
 
         elevation: 1,
-        borderRadius: 8
+        borderRadius: 5
 
     },
     IconBlend: {

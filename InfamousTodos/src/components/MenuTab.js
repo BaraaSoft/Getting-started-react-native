@@ -26,11 +26,8 @@ const Tabview = styled(ScrollView)`
     background:transparent;
     padding-bottom:40px;
     padding-top:20px;
-    padding-left:6px;
+    padding-left:2px;
     padding-right:6px;
-
-    
-
 `;
 const animeView = animated(View);
 const Itemview = styled(animeView)`
@@ -43,6 +40,11 @@ const Itemview = styled(animeView)`
    
     border-radius:4px;
 `;
+const HorizentalSpace = styled.View`
+
+    width:12px;
+    align-self: stretch;
+`
 
 
 const MenuItem = (props) => {
@@ -81,6 +83,7 @@ class MenuTabs extends Component {
         return (
             <SafeAreaView style={{ elevation: 5 }}>
                 <Tabview horizontal={true} contentContainerStyle={styles.contentContainer} showsHorizontalScrollIndicator={false} >
+                    <HorizentalSpace />
                     <MenuItem
                         itemId={selected["1"]}
                         active={selected["1"]}
@@ -94,6 +97,7 @@ class MenuTabs extends Component {
                         itemId={selected["3"]}
                         active={selected["3"]}
                         onClick={(e) => this.onItemClicked.call(this, { id: "3" })} />
+                    <HorizentalSpace />
                 </Tabview>
             </SafeAreaView>
         );
@@ -104,6 +108,7 @@ class MenuTabs extends Component {
 const styles = StyleSheet.create({
     contentContainer: {
         alignItems: 'center',
+        flexGrow: 1
         // width: '42%',
         // width: 168
     },

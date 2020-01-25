@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import styled from 'styled-components';
 import Header from './components/Header';
+import { MenuTabs } from './components';
 
 
 
@@ -31,6 +32,7 @@ const App = (props) => {
     return (
         <Box>
             <Header />
+            <MenuTabs />
         </Box>
     );
 }

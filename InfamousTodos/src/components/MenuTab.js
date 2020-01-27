@@ -7,6 +7,7 @@ import {
     StatusBar,
     TouchableOpacity,
     ScrollView,
+    Animated,
     TouchableWithoutFeedback
 } from 'react-native';
 import styled from 'styled-components';
@@ -49,27 +50,45 @@ const HorizentalSpace = styled.View`
 
 const MenuItem = (props) => {
     const { active, onClick } = props;
-    let { scale, ...styleProps } = useSpring({
-        scale: active ? 1.15 : .95,
-        shadowOpacity: active ? 0.48 : 0.32,
-        shadowRadius: active ? 11.95 : 5.46,
+    let { scale, shadowXY, ...styleProps } = useSpring({
+        from: {
+            scale: .95,
+            shadowXY: [0, 1]
+        },
+        to: [{
+            scale: active ? 1.15 : .95,
+            shadowOpacity: active ? 0.40 : 0.32,
+            shadowRadius: active ? 10 : 5.46,
 
-        elevation: active ? 18 : 9,
-        config: config.gentle
+            elevation: active ? 12 : 9,
+            shadowXY: active ? [0, 1] : [0, 0],
+            config: config.gentle
 
-    })
+        }]
+    });
     return (
         <TouchableWithoutFeedback onPress={onClick}>
             <Itemview style={{
                 ...styles.menuAnime,
                 transform: [{ scale }],
-                ...styleProps
+                ...styleProps,
+                shadowOffset: shadowXY.interpolate((x, y) => ({ width: x, height: y }))
             }} />
         </TouchableWithoutFeedback>
 
     );
 }
 
+// {
+//     shadowOffset: active ? ({
+//         width: 0,
+//         height: 4,
+//     }) : ({
+//         width: 1,
+//         height: 9,
+//     })
+
+// }
 class MenuTabs extends Component {
     state = {
         selected: { "2": true }

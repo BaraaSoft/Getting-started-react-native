@@ -40,7 +40,7 @@ const Title = styled.Text`
 const IconHolder = styled.View`
 padding:4px;
 margin:8px;
-`
+`;
 
 
 
